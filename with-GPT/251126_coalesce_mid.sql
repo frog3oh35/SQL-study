@@ -1,0 +1,21 @@
+/*
+📅 Date: 2025-11-26
+🧩 Topic: COALESCE (NULL 처리)
+🐰 문제 요약 :
+    - 2025년 11월 동안의 차량 정비 기록을 기준으로,
+    각 차주별 정비 횟수와 총 비용을 구한다.
+    추가 비용(EXTRA_FEE)은 없을 수 있으므로 기본 비용에 COALESCE로 처리해야 한다.
+    출력: OWNER_NAME, REPAIR_COUNT, TOTAL_COST
+
+*/
+
+SELECT
+    o.OWNER_NAME,
+    COUNT(r.REPAIR_ID) AS REPAIR_COUNT,
+    SUM(r.BASE_FEE + COALESCE(r.EXTRA_FEE, 0)) AS TOTAL_COST
+FROM CAR_REPAIR AS r
+JOIN CAR_OWNER AS o
+  ON r.CAR_ID = o.CAR_ID
+WHERE r.REPAIR_DATE >= '2025-11-01' AND r.REPAIR_DATE < '2025-12-01'
+GROUP BY o.OWNER_NAME
+ORDER BY TOTAL_COST DESC, o.OWNER_NAME ASC;
