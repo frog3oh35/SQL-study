@@ -1,0 +1,27 @@
+/*
+📅 Date: 2025-12-02
+🧩 Topic: INNER JOIN 
+🐰 문제 요약 :
+    - GUEST - RESERVATION - ROOM JOIN 체인
+    - 조건: VIP >= Gold, ROOM_TYPE = Suite, CHECKIN_DATE = '2025-01-01'
+    - No subquery allowed
+    
+💦 오답 기록:
+💡 리팩토링 포인트:
+*/
+
+SELECT
+    g.NAME AS GUEST_NAME,
+    g.VIP_LEVEL AS VIP_LEVEL,
+    m.ROOM_TYPE AS ROOM_TYPE,
+    m.PRICE AS PRICE,
+    r.CHECKIN_DATE AS CHECKIN_DATE
+FROM GUEST AS g
+INNER JOIN RESERVATION AS r
+        ON g.GUEST_ID = r.GUEST_ID
+INNER JOIN ROOM AS m
+        ON r.ROOM_ID = m.ROOM_ID
+WHERE VIP_LEVEL IN ('Gold', 'Platinum')
+  AND m.ROOM_TYPE = 'Suite' 
+  AND r.CHECKIN_DATE = '2025-01-01'
+ORDER BY PRICE DESC, GUEST_NAME ASC;
