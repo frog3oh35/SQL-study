@@ -1,0 +1,20 @@
+/*
+문제: 카테고리 별 도서 판매량 집계하기
+출처: [프로그래머스] SQL kit - GROUP BY
+난이도: Level 3
+포인트: GROUP BY, LIKE
+날짜: 2025-12-08
+
+오답 기록:
+리팩토링 포인트:
+*/
+
+SELECT
+    b.CATEGORY AS CATEGORY,
+    SUM(s.SALES) AS TOTAL_SALES
+FROM BOOK AS b
+INNER JOIN BOOK_SALES AS s
+        ON b.BOOK_ID = s.BOOK_ID
+WHERE s.SALES_DATE >= '2022-01-01' AND s.SALES_DATE < '2022-02-01'
+GROUP BY b.CATEGORY
+ORDER BY CATEGORY ASC;
