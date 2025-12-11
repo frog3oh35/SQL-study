@@ -1,0 +1,27 @@
+/*
+문제: 즐겨찾기가 가장 많은 식당 정보 출력하기
+출처: [프로그래머스] SQL kit - GROUP BY
+난이도: Level 3
+포인트: GROUP BY
+날짜: 2025-12-11
+DBMS: MySQL
+
+💡 리팩토링 포인트:
+*/
+
+SELECT
+    R.FOOD_TYPE,
+    R.REST_ID,
+    R.REST_NAME,
+    R.FAVORITES
+FROM REST_INFO AS R
+JOIN (
+    SELECT
+        FOOD_TYPE,
+        MAX(FAVORITES) AS MAX_FAV
+    FROM REST_INFO
+    GROUP BY FOOD_TYPE
+) AS M
+    ON R.FOOD_TYPE = M.FOOD_TYPE
+    AND R.FAVORITES = M.MAX_FAV
+ORDER BY FOOD_TYPE DESC;
