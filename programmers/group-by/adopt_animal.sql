@@ -1,0 +1,19 @@
+/*
+문제: 입양 시각 구하기(1)
+출처: [프로그래머스] SQL kit - GROUP BY
+난이도: Level 2
+포인트: GROUP BY
+날짜: 2025-12-12
+DBMS: MySQL
+
+💡 리팩토링 포인트:
+    - 시간 범위는 집계 이전 조건이므로 WHERE 사용
+*/
+
+SELECT
+    HOUR(DATETIME) AS HOUR,
+    COUNT(*) AS COUNT
+FROM ANIMAL_OUTS
+WHERE HOUR(DATETIME) BETWEEN 9 AND 19
+GROUP BY HOUR(DATETIME)
+ORDER BY HOUR(DATETIME) ASC;
