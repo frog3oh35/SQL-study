@@ -1,0 +1,16 @@
+/*
+문제: 있었는데요 없었습니다
+출처: [프로그래머스] SQL kit - JOIN
+난이도: Level 3
+포인트: INNER JOIN
+날짜: 2025-12-24
+*/
+
+SELECT
+    i.ANIMAL_ID,
+    i.NAME
+FROM ANIMAL_INS AS i
+INNER JOIN ANIMAL_OUTS AS o
+        ON i.ANIMAL_ID = o.ANIMAL_ID
+WHERE i.DATETIME > o.DATETIME
+ORDER BY i.DATETIME ASC;
