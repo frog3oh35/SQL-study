@@ -1,3 +1,15 @@
+/*
+문제: 조건에 맞는 사용자와 총 거래금액 조회하기
+출처: [프로그래머스] SQL kit - GROUP BY
+난이도: Level 3
+포인트: GROUP BY
+날짜: 2026-01-01
+DBMS: MySQL
+
+💡 리팩토링 포인트:
+    1. 비집계 컬럼은 들어가야함!! GROUP BY u.USER_ID, u.NICKNAME 이렇게!
+*/
+
 SELECT
     u.USER_ID,
     u.NICKNAME,
