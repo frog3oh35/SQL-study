@@ -15,10 +15,9 @@ SELECT
     LIMIT 1) AS RECENT_ERROR
 FROM SERVERS AS s;
 
-
 /*
 📅 Date: 2026-01-08
-🧩 Topic: SELECT Subquery
+🧩 Topic: Advanced SELECT Subquery
 🐰 문제2 요약 :
     - 프로젝트별 최고 기여 멤버(MVP) 추출: SCORE 내림차순 및 M_ID 오름차순 정렬 후 LIMIT 1을 적용한 상관 서브쿼리 활용
 */
